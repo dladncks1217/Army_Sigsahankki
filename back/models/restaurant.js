@@ -1,0 +1,30 @@
+module.exports = (sequelize,DataTypes)=>(
+    sequelize.define('restaurant',{
+        business_name:{
+            type:DataTypes.STRING(40),
+            allowNull:false,
+            unique:true,
+        },
+        tel:{
+            type:DataTypes.STRING(40),
+            allowNull:false,
+            unique:true,
+        },
+        restaurant_type:{
+            type:DataTypes.STRING(20),
+            allowNull:false,
+        },
+        address:{
+            type:DataTypes.STRING(100),
+            allowNull:false,
+        },
+        owner:{
+            type:DataTypes.STRING(10),
+            allowNull:false,
+        },
+        operating_time:{
+            type:DataTypes.STRING(40),
+            allowNull:false,
+        }
+    })
+);
