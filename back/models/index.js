@@ -1,6 +1,6 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV||'development';
-const config = require('../config/config.js');
+const config = require('../config/config.js')[env];
 
 const db = {};
 
@@ -12,7 +12,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.User = require('./user')(sequelize,Sequelize);
-db.Location = require('./location')(sequelize,Sequelize);
-db.Restaurants = require('./restaurant')(sequelize,this.Sequelize);
+db.Location = require('./locations')(sequelize,Sequelize);
+db.Restaurants = require('./restaurant')(sequelize,Sequelize);
 
 module.exports = db;

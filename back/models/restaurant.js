@@ -1,7 +1,7 @@
 module.exports = (sequelize,DataTypes)=>(
     sequelize.define('restaurant',{
         business_name:{
-            type:DataTypes.STRING(40),
+            type:DataTypes.STRING(30),
             allowNull:false,
             unique:true,
         },
@@ -22,7 +22,11 @@ module.exports = (sequelize,DataTypes)=>(
             type:DataTypes.STRING(10),
             allowNull:false,
         },
-        operating_time:{
+        open_time:{
+            type:DataTypes.STRING(40),
+            allowNull:false,
+        },
+        close_time:{
             type:DataTypes.STRING(40),
             allowNull:false,
         }
