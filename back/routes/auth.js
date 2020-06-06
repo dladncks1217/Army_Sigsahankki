@@ -6,7 +6,7 @@ const {User} = require('../models');
 const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 
 router.post('/join', isNotLoggedIn, async(req,res,next)=>{ 
-    const {userId, email, location, phoneNumber, username, password} = req.body; 
+    const {email, location, phoneNumber, username, password} = req.body; 
     try{
         console.log(email);
         const exUser = await User.findOne({where:{email}});
@@ -19,7 +19,6 @@ router.post('/join', isNotLoggedIn, async(req,res,next)=>{
             console.timeEnd('암호화 시간'); // 시간맞추는용도임.
             const newUser = await User.create({
                 email,
-                userId,
                 location,
                 phoneNumber,
                 username,

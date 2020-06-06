@@ -1,10 +1,5 @@
 module.exports = (sequelize,DataTypes)=>(
     sequelize.define('user',{
-        userId:{
-            type:DataTypes.STRING(40),
-            allowNull:false,
-            unique:true,
-        },
         phoneNumber:{
             type:DataTypes.STRING(40),
             allowNull:false,

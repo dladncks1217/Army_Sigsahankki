@@ -8,13 +8,14 @@ const passport = require('passport');
 require('dotenv').config();
 
 const indexRouter = require('./routes/index.js');
-// const authRouter = require('./routes/auth.js');
+const authRouter = require('./routes/auth.js');
 
 const {sequelize} = require('./models');
+const passportConfig = require('./passport');
 const app = express();
 sequelize.sync();
 
-// passportConfig(passport);
+passportConfig(passport);
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'public')));
@@ -31,8 +32,8 @@ app.use(session({
     },
 }));
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/',indexRouter);
 // app.use('/auth',authRouter);
