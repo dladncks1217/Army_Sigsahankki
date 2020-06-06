@@ -36,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/',indexRouter);
-// app.use('/auth',authRouter);
+app.use('/auth',authRouter);
 
 app.use((req,res,next)=>{
     const err = new Error('Not Found');
@@ -50,6 +50,6 @@ app.use((err,req,res)=>{
     res.status(err.status||500);
 });
 
-app.listen(app.get(process.env.PORT),()=>{
+app.listen(process.env.PORT,()=>{
     console.log(`${process.env.PORT} 번 포트에서 서버 대기중`);
 });
