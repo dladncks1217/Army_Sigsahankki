@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const {User} = require('../models');
 const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 
-router.post('/join',  async(req,res,next)=>{ 
+router.post('/join', isNotLoggedIn, async(req,res,next)=>{ 
     const {email, location, phoneNumber, username, password} = req.body; 
     try{
         console.log(email);
