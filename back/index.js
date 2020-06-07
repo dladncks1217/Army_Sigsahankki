@@ -17,6 +17,9 @@ sequelize.sync();
 
 passportConfig(passport);
 
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'));
+
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.json());
