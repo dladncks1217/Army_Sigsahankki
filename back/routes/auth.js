@@ -107,8 +107,19 @@ router.post('/mailsend', isNotLoggedIn, async(req,res,next) => {
     }
 });
 
-router.post('passwordchange',isLoggedIn, async(req,res,next)=>{
-
+router.post('/passwordchange', isLoggedIn, async(req,res,next)=>{
+    try{
+        let {password} = req.body;
+        const newPassword = await bcrypt.hash(password,12);
+        console.log(newPassword);
+        User.update({password:newPassword},{where:{id:req.user.id}});
+        return(
+            res.status(200).json("비밀번호 변경이 완료되었습니다.")
+        );
+    }catch(err){
+        console.error(err);
+        next(err);
+    }
 });
 
 module.exports = router;
