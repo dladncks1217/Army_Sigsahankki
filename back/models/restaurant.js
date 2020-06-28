@@ -22,10 +22,6 @@ module.exports = (sequelize,DataTypes)=>(
             type:DataTypes.STRING(100),
             allowNull:false,
         },
-        owner:{ // 가게 주인
-            type:DataTypes.STRING(10),
-            allowNull:false,
-        },
         open_time:{ // 오픈시간
             type:DataTypes.STRING(40),
             allowNull:false,
@@ -33,6 +29,10 @@ module.exports = (sequelize,DataTypes)=>(
         close_time:{ // 영업종료시간
             type:DataTypes.STRING(40),
             allowNull:false,
-        }
+        },
+    },{
+        define: {
+            timestamps: true,
+          }
     })
 );

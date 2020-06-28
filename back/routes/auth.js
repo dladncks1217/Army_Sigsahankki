@@ -9,7 +9,7 @@ const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 require('dotenv').config();
 
 router.post('/join', isNotLoggedIn, async(req,res,next)=>{ 
-    const {email, location, phoneNumber, username, password} = req.body; 
+    const {email, Classification_address, phoneNumber, username, password} = req.body; 
     try{
         console.log(email);
         const exUser = await User.findOne({where:{email}});
@@ -22,7 +22,7 @@ router.post('/join', isNotLoggedIn, async(req,res,next)=>{
             console.timeEnd('암호화 시간'); 
             const newUser = await User.create({
                 email,
-                location,
+                Classification_address,
                 phoneNumber,
                 username,
                 password:hash,
