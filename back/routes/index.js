@@ -47,4 +47,22 @@ router.get('/hwacheon', async(req,res,next)=>{
     }
 });
 
+router.get('/hwacheon/:id',async(req,res,next)=>{
+    try{
+        const store = await Restaurants.findOne({where:{id:req.params.id}});
+        if(store){
+            return(
+                res.status(200).json(store)
+            );
+        }else{
+            return(
+                res.status(404).send("리소스를 찾을 수 없습니다.")
+            );
+                    }
+    }catch(err){
+        console.error(err);
+        next(err);
+    }
+});
+
 module.exports = router;
