@@ -12,7 +12,9 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.User = require('./user')(sequelize,Sequelize);
-db.Location = require('./locations')(sequelize,Sequelize);
+// db.Location = require('./locations')(sequelize,Sequelize);
 db.Restaurants = require('./restaurant')(sequelize,Sequelize);
+
+
 
 module.exports = db;

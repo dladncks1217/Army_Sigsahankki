@@ -1,32 +1,36 @@
 module.exports = (sequelize,DataTypes)=>(
     sequelize.define('restaurant',{
-        business_name:{
+        business_name:{ // 가게명
             type:DataTypes.STRING(30),
             allowNull:false,
             unique:true,
         },
-        tel:{
+        tel:{ // 전화번호
             type:DataTypes.STRING(40),
             allowNull:false,
             unique:true,
         },
-        restaurant_type:{
+        restaurant_type:{ // 한식 일식 중식
             type:DataTypes.STRING(20),
             allowNull:false,
         },
-        address:{
+        Classification_address:{ // 분류 주소 ex) 화천
             type:DataTypes.STRING(100),
             allowNull:false,
         },
-        owner:{
+        address:{ // 상세 주소
+            type:DataTypes.STRING(100),
+            allowNull:false,
+        },
+        owner:{ // 가게 주인
             type:DataTypes.STRING(10),
             allowNull:false,
         },
-        open_time:{
+        open_time:{ // 오픈시간
             type:DataTypes.STRING(40),
             allowNull:false,
         },
-        close_time:{
+        close_time:{ // 영업종료시간
             type:DataTypes.STRING(40),
             allowNull:false,
         }

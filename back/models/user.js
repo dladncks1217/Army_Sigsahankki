@@ -1,24 +1,24 @@
 module.exports = (sequelize,DataTypes)=>(
     sequelize.define('user',{
-        phoneNumber:{
+        phoneNumber:{ // 사용자 전화번호
             type:DataTypes.STRING(40),
             allowNull:false,
             unique:true,
         },
-        username:{
+        username:{ // 사용자 실제 이름
             type:DataTypes.STRING(40),
             allowNull:false,
         },
-        email:{
+        email:{ // 사용자 이메일 (ID 대용)
             type:DataTypes.STRING(40),
             allowNull:false,
             unique:true,
         },
-        password:{
+        password:{ // 비밀번호
             type:DataTypes.STRING(100),
             allowNull:false,
         },
-        location:{
+        Classification_address:{ // 분류 주소 ex) 화천
             type:DataTypes.STRING(20),
             allowNull:false,
         }
