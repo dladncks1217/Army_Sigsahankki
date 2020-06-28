@@ -1,3 +1,5 @@
+디비 비번 : 1q2w3e4r!
+
 {회원가입}
 requset => localhost:8010/auth/join (post)
 
