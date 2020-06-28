@@ -33,7 +33,7 @@ router.post('/add', async(req,res,next)=>{ // 걍 임시로 쓸라고 만든거
 });
 
 
-router.get('/hwacheon', async(req,res,next)=>{
+router.get('/hwacheon', async(req,res,next)=>{ 
     try{
         const hwacheon = await Restaurants.findAll({where:{Classification_address:"화천"}});
         if(hwacheon){

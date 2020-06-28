@@ -49,7 +49,7 @@ router.post('/login',isNotLoggedIn, (req,res,next)=>{
                 console.error(loginError);
                 return next(loginError);
             }
-            return res.status(200).json("로그인 성공");
+            return res.status(200).json(user);
         })
     })(req,res,next);
 });
@@ -94,11 +94,11 @@ router.post('/mailsend', isNotLoggedIn, async(req,res,next) => {
                 }
             });
             return(
-                res.status(200).send("이메일 발송에 성공했습니다!")
+                res.status(200).json("이메일 발송에 성공했습니다!")
             );
         }else{
             return(
-                res.status(500).send("새 비밀번호 암호화 과정에서 문제가 발생했습니다!")
+                res.status(500).json("새 비밀번호 암호화 과정에서 문제가 발생했습니다!")
             );
         }
     }catch(err){
@@ -112,10 +112,17 @@ router.post('/passwordchange', isLoggedIn, async(req,res,next)=>{
         let {password} = req.body;
         const newPassword = await bcrypt.hash(password,12);
         console.log(newPassword);
-        User.update({password:newPassword},{where:{id:req.user.id}});
-        return(
-            res.status(200).json("비밀번호 변경이 완료되었습니다.")
-        );
+        const change = User.update({password:newPassword},{where:{id:req.user.id}});
+        
+        if(change){
+            return(
+                res.status(200).json("비밀번호 변경이 완료되었습니다.")
+            );
+        }else{
+            return(
+                res.status(500).json("비밀번호 변경에 실패하였습니다!")
+            )
+        }
     }catch(err){
         console.error(err);
         next(err);

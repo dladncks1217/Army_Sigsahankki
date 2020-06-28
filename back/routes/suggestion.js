@@ -29,7 +29,7 @@ router.post('/mailsend',isLoggedIn,async(req,res,next)=>{
             }
         });
         return(
-            res.status(200).send("이메일 발송에 성공했습니다!")
+            res.status(200).json("이메일 발송에 성공했습니다!")
         );
     }catch(err){
         console.error(err);
